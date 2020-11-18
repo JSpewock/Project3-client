@@ -7,15 +7,29 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cocktails = []
+      cocktails: []
     }
+    this.getCocktails = this.getCocktails.bind(this)
   }
   
+  componentDidMount() {
+    this.getCocktails()
+  }
+
+
+  getCocktails() {
+    fetch(baseURL)
+    .then(data => {
+      return data.json()
+    }).then(parsedData => {
+      this.setState({cocktails: parsedData})
+    })
+  }
   
   render() {
     return (
-      <div>
-        < Header />
+      <div onClick={this.getCocktails}>
+        < Header/>
       </div>
     )
   }
