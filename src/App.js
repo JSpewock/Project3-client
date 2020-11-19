@@ -38,7 +38,7 @@ export default class App extends Component {
       <div onClick={this.getCocktails}>
         < Header />
         < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
-        < CocktailList />
+        < CocktailList allCocktails={this.state.cocktails}/>
       </div>
     )
   }
