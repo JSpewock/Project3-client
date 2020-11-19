@@ -12,6 +12,7 @@ export default class App extends Component {
       baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail'
     }
     this.getCocktails = this.getCocktails.bind(this)
+    this.handleAddCocktail = this.handleAddCocktail.bind(this)
   }
   
   componentDidMount() {
@@ -27,12 +28,16 @@ export default class App extends Component {
       this.setState({cocktails: parsedData})
     })
   }
+
+  handleAddCocktail(data) {
+    this.setState({cocktails: this.state.cocktails.concat(data)})
+  }
   
   render() {
     return (
       <div onClick={this.getCocktails}>
         < Header />
-        < Form baseURL={this.state.baseURL} />
+        < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
         < CocktailList />
       </div>
     )

@@ -28,7 +28,15 @@ export default class Form extends Component {
             }),
             headers:{
                 'Content-Type': 'application/json'
-            }
+            } .then(res => res.json())
+            .then(data => {
+                this.props.addCocktail(data)
+                this.setState({
+                    name: '',
+                    instructions: '',
+                    alcoholic: 'non-Alcoholic'
+                })
+            })
         })
     }
 
