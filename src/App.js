@@ -11,7 +11,8 @@ export default class App extends Component {
     this.state = {
       cocktails: [],
       baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail',
-      showUpdateForm: false
+      showUpdateForm: false,
+      cocktailToUpdate: {}
     }
     this.getCocktails = this.getCocktails.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
@@ -49,8 +50,11 @@ export default class App extends Component {
     })
   }
 
-  showUpdateForm() {
-    this.setState({showUpdateForm: !this.state.showUpdateForm})
+  showUpdateForm(cocktailToUpdate) {
+    this.setState({
+      showUpdateForm: true,
+      cocktailToUpdate: cocktailToUpdate
+    })
   }
   
   render() {
@@ -58,7 +62,7 @@ export default class App extends Component {
       <div>
         < Header />
         {this.state.showUpdateForm ? ( 
-          < UpdateForm />
+          < UpdateForm cocktail={this.state.cocktailToUpdate} />
           )  : (
           <div>
           < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>

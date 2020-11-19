@@ -49,7 +49,7 @@ export default class Cocktail extends Component {
                 <button onClick={() => {this.props.delete(this.props.cocktail._id)}}>
                     Delete
                 </button>
-                <button onClick={this.props.showUpdateForm}>Edit</button>
+                <button onClick={()=> {this.props.showUpdateForm(this.props.cocktail)}}>Edit</button>
                 
             </div>
         )
