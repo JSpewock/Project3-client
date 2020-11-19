@@ -18,6 +18,8 @@ export default class App extends Component {
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
     this.deleteCocktail = this.deleteCocktail.bind(this)
     this.showUpdateForm = this.showUpdateForm.bind(this)
+    this.toggleUpdateForm = this.toggleUpdateForm.bind(this)
+    this.handleUpdateCocktail = this.handleUpdateCocktail.bind(this)
   }
   
   componentDidMount() {
@@ -57,12 +59,23 @@ export default class App extends Component {
     })
   }
   
+  toggleUpdateForm() {
+    this.setState({showUpdateForm : false})
+  }
+
+  handleUpdateCocktail(data) {
+    const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === data._id)
+    const fakeCocktails = [...this.state.cocktails]
+    fakeCocktails[findIndex] = data
+    this.setState({cocktails: fakeCocktails})
+  }
+  
   render() {
     return (
       <div>
         < Header />
         {this.state.showUpdateForm ? ( 
-          < UpdateForm cocktail={this.state.cocktailToUpdate} />
+          < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           )  : (
           <div>
           < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
