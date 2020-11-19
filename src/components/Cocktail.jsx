@@ -10,6 +10,7 @@ export default class Cocktail extends Component {
             ingredients.push('strIngredient' + numberString)
             measurements.push('strMeasure' + numberString)
         }
+        let id = this.props.cocktail._id
         return (
             <div id={this.props.cocktail.strDrink} key={this.props.cocktail._id}>
                 <h1>{this.props.cocktail.strDrink}</h1>
@@ -17,17 +18,36 @@ export default class Cocktail extends Component {
                 <p>{this.props.cocktail.strInstructions}</p>
                 <p>{this.props.cocktail.strAlcoholic}</p>
 
-    
-                {ingredients.map(ingredient => {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Measurement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                {ingredients.map((ingredient, index) => {
                     if (this.props.cocktail[ingredient] !== null) {
-                        return <p>{this.props.cocktail[ingredient]}</p>
+                        return <p key={index}>{this.props.cocktail[ingredient]}</p>
                     }
                 })}
-                {measurements.map(measurement => {
+                {measurements.map((measurement, index) => {
                     if (this.props.cocktail[measurement] !== null) {
-                        return <p>{this.props.cocktail[measurement]}</p>
+                        return <p key={index}>{this.props.cocktail[measurement]}</p>
                     }
                 })}
+
+                <button onClick={() => {
+                    this.props.delete(this.props.cocktail._id)
+                }}>Delete</button>
                 
             </div>
         )

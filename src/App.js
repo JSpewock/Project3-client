@@ -13,6 +13,7 @@ export default class App extends Component {
     }
     this.getCocktails = this.getCocktails.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
+    this.deleteCocktail = this.deleteCocktail.bind(this)
   }
   
   componentDidMount() {
@@ -35,7 +36,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(this.state.baseURL + id, {
+    fetch(this.state.baseURL + '/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
@@ -50,7 +51,7 @@ export default class App extends Component {
       <div onClick={this.getCocktails}>
         < Header />
         < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
-        < CocktailList allCocktails={this.state.cocktails}/>
+        < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail}/>
       </div>
     )
   }
