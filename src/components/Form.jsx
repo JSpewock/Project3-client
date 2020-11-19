@@ -34,7 +34,8 @@ export default class Form extends Component {
                 this.setState({
                     strDrink: '',
                     strInstructions: '',
-                    strAlcoholic: 'non-Alcoholic'
+                    strAlcoholic: 'non-Alcoholic',
+                    resetCheck: ''
                 })
             })
     }
