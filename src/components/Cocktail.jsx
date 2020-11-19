@@ -16,8 +16,7 @@ export default class Cocktail extends Component {
                 <h1>{this.props.cocktail.strDrink}</h1>
                 <img src={this.props.cocktail.strDrinkThumb} />
                 <p>{this.props.cocktail.strInstructions}</p>
-                <p>{this.props.cocktail.strAlcoholic}</p>
-
+                
                 <table>
                     <thead>
                         <tr>
@@ -26,9 +25,11 @@ export default class Cocktail extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* loop to make 15 tr tags  */}
                     {ingredients.map((ingredient, index) => {
                         return (
                             <tr>
+                                {/* if the ingredient or masurement is not equal to null, render it on the page */}
                                 {this.props.cocktail[ingredient] !== null ? (
                                     <td>{this.props.cocktail[ingredients[index]]}</td>
                                 ) : (
@@ -45,10 +46,12 @@ export default class Cocktail extends Component {
                     }
                     </tbody>
                 </table>
-
-                <button onClick={() => {
-                    this.props.delete(this.props.cocktail._id)
-                }}>Delete</button>
+                
+                <p>{this.props.cocktail.strAlcoholic}</p>
+                
+                <button onClick={() => {this.props.delete(this.props.cocktail._id)}}>
+                    Delete
+                </button>
                 
             </div>
         )

@@ -48,7 +48,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div onClick={this.getCocktails}>
+      <div>
         < Header />
         < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
         < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail}/>
