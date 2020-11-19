@@ -3,11 +3,13 @@ import React, { Component } from 'react'
 export default class Cocktail extends Component {
     render() {
         const ingredients = []
+        const measurements = []
+        //loop to concatinate strIngredient and Measure 1-15
         for (let i = 1; i < 16; i++) {
             let numberString = i.toString()
             ingredients.push('strIngredient' + numberString)
+            measurements.push('strMeasure' + numberString)
         }
-        // console.log(ingredients)
         return (
             <div id={this.props.cocktail.strDrink} key={this.props.cocktail._id}>
                 <h1>{this.props.cocktail.strDrink}</h1>
@@ -17,31 +19,16 @@ export default class Cocktail extends Component {
 
     
                 {ingredients.map(ingredient => {
-                    
-                    console.log(this.props.cocktail[ingredient])
-
-
                     if (this.props.cocktail[ingredient] !== null) {
                         return <p>{this.props.cocktail[ingredient]}</p>
                     }
-                })
-                }
+                })}
+                {measurements.map(measurement => {
+                    if (this.props.cocktail[measurement] !== null) {
+                        return <p>{this.props.cocktail[measurement]}</p>
+                    }
+                })}
                 
-                {/* <p>{this.props.cocktail.strMeasure1}</p>
-                <p>{this.props.cocktail.strMeasure2}</p>
-                <p>{this.props.cocktail.strMeasure3}</p>
-                <p>{this.props.cocktail.strMeasure4}</p>
-                <p>{this.props.cocktail.strMeasure5}</p>
-                <p>{this.props.cocktail.strMeasure6}</p>
-                <p>{this.props.cocktail.strMeasure7}</p>
-                <p>{this.props.cocktail.strMeasure8}</p>
-                <p>{this.props.cocktail.strMeasure9}</p>
-                <p>{this.props.cocktail.strMeasure10}</p>
-                <p>{this.props.cocktail.strMeasure11}</p>
-                <p>{this.props.cocktail.strMeasure12}</p>
-                <p>{this.props.cocktail.strMeasure13}</p>
-                <p>{this.props.cocktail.strMeasure14}</p>
-                <p>{this.props.cocktail.strMeasure15}</p> */}
             </div>
         )
     }
