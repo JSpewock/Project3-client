@@ -32,6 +32,18 @@ export default class App extends Component {
   handleAddCocktail(data) {
     this.setState({cocktails: this.state.cocktails.concat(data)})
   }
+
+  //taken from GA w08d05 lesson notes
+  deleteCocktail(id) {
+    fetch(this.state.baseURL + id, {
+      method: 'DELETE'
+    }).then (response => {
+      const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
+      const fakeCocktails = [...this.state.cocktails]
+      fakeCocktails.splice(findIndex, 1)
+      this.setState({ cocktails: fakeCocktails })
+    })
+  }
   
   render() {
     return (
