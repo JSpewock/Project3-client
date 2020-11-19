@@ -26,24 +26,25 @@ export default class Cocktail extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                
-                            </td>
-                            <td></td>
-                        </tr>
+                    {ingredients.map((ingredient, index) => {
+                        return (
+                            <tr>
+                                {this.props.cocktail[ingredient] !== null ? (
+                                    <td>{this.props.cocktail[ingredients[index]]}</td>
+                                ) : (
+                                    null
+                                )}
+                                {this.props.cocktail[measurements[index]] !== null ? (
+                                    <td>{this.props.cocktail[measurements[index]]}</td>
+                                ) : (
+                                    null
+                                )}
+                            </tr>
+                        )}
+                        )
+                    }
                     </tbody>
                 </table>
-                {ingredients.map((ingredient, index) => {
-                    if (this.props.cocktail[ingredient] !== null) {
-                        return <p key={index}>{this.props.cocktail[ingredient]}</p>
-                    }
-                })}
-                {measurements.map((measurement, index) => {
-                    if (this.props.cocktail[measurement] !== null) {
-                        return <p key={index}>{this.props.cocktail[measurement]}</p>
-                    }
-                })}
 
                 <button onClick={() => {
                     this.props.delete(this.props.cocktail._id)
