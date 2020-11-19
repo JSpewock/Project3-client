@@ -13,18 +13,8 @@ export default class Form extends Component {
     }
 
     handleChange(event) {
-        let isAlcholic = ''
-        if (event.target.id === 'alcoholic') {
-            if (event.target.checked) {
-                isAlcholic = 'Alcoholic'
-            } else {
-                isAlcholic = 'non-Alcoholic'
-            }
-        }
-        this.setState({ 
-            [event.target.id] : event.target.value, 
-            alcoholic: isAlcholic
-        })
+        console.log(event.target)
+        this.setState({ [event.target.id] : event.target.value})
     }
 
     handleSubmit(event) {
@@ -46,12 +36,27 @@ export default class Form extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Cocktail Name: </label>
-                    <input type="text" id="name" onChange={this.handleChange}/>
-                    <label htmlFor="instructions">Intructions: </label>
-                    <input type="text" id="instructions" onChange={this.handleChange}/>
-                    <label htmlFor="alcoholic">Alcoholic?</label>
-                    <input type="checkbox" id="alcoholic" value="alcoholic" onChange={this.handleChange}/>
+                    {/* name */}
+                    <label htmlFor="name">
+                        Cocktail Name: 
+                        <input type="text" id="name" onChange={this.handleChange}/>
+                    </label>
+                    {/* instructions */}
+                    <label htmlFor="instructions">
+                        Intructions: 
+                        <input type="text" id="instructions" onChange={this.handleChange}/>
+                    </label>
+                    {/* isAlcoholic */}
+                    <label htmlFor='Alcoholic'>
+                        Alcoholic
+                        <input type='radio' id='alcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange} />
+                    </label>
+                    <label htmlFor='Alcoholic'>
+                        non-Alcoholic
+                        <input type='radio' id='alcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange} />
+                    </label>
+
+                    
                     <input type="submit" value="Add Cocktail"/>
                 </form>
             </div>
