@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
-export default class Form extends Component {
+export default class UpdateForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            strDrink: '',
-            strInstructions: '',
-            strAlcoholic: 'non-Alcoholic'
+            cocktail: this.props.cocktail,
+            strDrink: this.props.cocktail.strDrink,
+            strInstructions: this.props.cocktail.strInstructions,
+            strAlcoholic: this.props.cocktail.strAlcoholic
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,32 +19,28 @@ export default class Form extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        fetch(this.props.baseURL, {
-            method: 'POST',
+        fetch(this.props.baseURL + '/' + this.props.cocktail._id, {
+            method: 'PUT',
             body: JSON.stringify({
                 strDrink: this.state.strDrink,
                 strInstructions: this.state.strInstructions,
                 strAlcoholic: this.state.strAlcoholic
             }),
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
-            } 
-            }).then(res => res.json())
-            .then(data => {
-                this.props.addCocktail(data)
-                this.setState({
-                    strDrink: '',
-                    strInstructions: '',
-                    strAlcoholic: 'non-Alcoholic',
-                    resetCheck: ''
-                })
-            })
+            }
+        }).then(res => res.json())
+        .then(data => {
+            this.props.handleUpdateCocktail(data)
+            this.props.toggleUpdateForm()
+        })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div onSubmit={this.handleSubmit}>
+                <h1>Edit {this.state.cocktail.strDrink} </h1>
+                <form>
                     {/* name */}
                     <label htmlFor="strDrink">
                         Cocktail Name: 
@@ -57,13 +54,13 @@ export default class Form extends Component {
                     {/* isAlcoholic */}
                     <label htmlFor='strAlcoholic'>
                         Alcoholic
-                        <input type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange} />
+                        <input type='radio' id='strAlcoholic' value='Alcoholic' checked={this.state.strAlcoholic === 'Alcoholic' ? true : false} name='Alcoholic' onChange={this.handleChange} />
                     </label>
                     <label htmlFor='strAlcoholic'>
                         non-Alcoholic
-                        <input type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange} />
+                        <input type='radio' id='strAlcoholic' value='non-Alcoholic' checked={this.state.strAlcoholic === 'non-Alcoholic' ? true : false} name='Alcoholic' onChange={this.handleChange} />
                     </label>
-                    <input type="submit" value="Add Cocktail"/>
+                    <input type="submit" value="Edit Cocktail"/>
                 </form>
             </div>
         )
