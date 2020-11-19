@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './components/Header'
 import Form from './components/Form'
 import CocktailList from './components/CoktailList'
+import UpdateForm from './components/UpdateForm'
 
 
 export default class App extends Component {
@@ -9,11 +10,13 @@ export default class App extends Component {
     super(props)
     this.state = {
       cocktails: [],
-      baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail'
+      baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail',
+      showUpdateForm: false
     }
     this.getCocktails = this.getCocktails.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
     this.deleteCocktail = this.deleteCocktail.bind(this)
+    this.showUpdateForm = this.showUpdateForm.bind(this)
   }
   
   componentDidMount() {
@@ -45,13 +48,24 @@ export default class App extends Component {
       this.setState({ cocktails: fakeCocktails })
     })
   }
+
+  showUpdateForm() {
+    this.setState({showUpdateForm: !this.state.showUpdateForm})
+  }
   
   render() {
     return (
       <div>
         < Header />
-        < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
-        < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail}/>
+        {this.state.showUpdateForm ? ( 
+          < UpdateForm />
+          )  : (
+          <div>
+          < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
+          < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
+          </div>
+        )
+        }
       </div>
     )
   }

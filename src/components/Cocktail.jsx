@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class Cocktail extends Component {
     render() {
         const ingredients = []
@@ -30,15 +31,11 @@ export default class Cocktail extends Component {
                         return (
                             <tr>
                                 {/* if the ingredient or masurement is not equal to null, render it on the page */}
-                                {this.props.cocktail[ingredient] !== null ? (
+                                {this.props.cocktail[ingredient] !== null && (
                                     <td>{this.props.cocktail[ingredients[index]]}</td>
-                                ) : (
-                                    null
                                 )}
-                                {this.props.cocktail[measurements[index]] !== null ? (
+                                {this.props.cocktail[measurements[index]] !== null && (
                                     <td>{this.props.cocktail[measurements[index]]}</td>
-                                ) : (
-                                    null
                                 )}
                             </tr>
                         )}
@@ -46,12 +43,13 @@ export default class Cocktail extends Component {
                     }
                     </tbody>
                 </table>
-                
+
                 <p>{this.props.cocktail.strAlcoholic}</p>
                 
                 <button onClick={() => {this.props.delete(this.props.cocktail._id)}}>
                     Delete
                 </button>
+                <button onClick={this.props.showUpdateForm}>Edit</button>
                 
             </div>
         )

@@ -6,7 +6,7 @@ export default class CoktailList extends Component {
         return (
             <div>
                 {this.props.allCocktails.map(cocktail => {
-                    return < Cocktail cocktail={cocktail} delete={this.props.delete}/>
+                    return < Cocktail cocktail={cocktail} delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
                 })}
             </div>
         )
