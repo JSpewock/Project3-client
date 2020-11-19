@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Header from './components/Header'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const baseURL = process.env.BASE_URL || 'http://localhost:3003/cocktail'
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cocktails: []
+    }
+    this.getCocktails = this.getCocktails.bind(this)
+  }
+  
+  componentDidMount() {
+    this.getCocktails()
+  }
+
+
+  getCocktails() {
+    fetch(baseURL)
+    .then(data => {
+      return data.json()
+    }).then(parsedData => {
+      this.setState({cocktails: parsedData})
+    })
+  }
+  
+  render() {
+    return (
+      <div onClick={this.getCocktails}>
+        < Header/>
+      </div>
+    )
+  }
 }
-
-export default App;
