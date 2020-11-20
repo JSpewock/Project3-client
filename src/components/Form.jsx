@@ -149,6 +149,11 @@ export default class Form extends Component {
                         Cocktail Name: 
                         <input type="text" id="strDrink" value={this.state.strDrink} onChange={this.handleChange}/>
                     </label>
+                    {/* Image */}
+                    <label htmlFor="strDrinkThumb">
+                        Cocktail Image: 
+                        <input type="text" id="strDrinkThumb" value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    </label>
                     {/* Ingredients */}
                     <table>
                         <thead>
