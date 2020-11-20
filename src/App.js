@@ -80,7 +80,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        < Header />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
         {this.state.showUpdateForm ? ( 
             < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (

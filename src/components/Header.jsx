@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Login from './Login'
 import SignUp from './SignUp'
+import SearchForm from './SearchForm'
 
 export default class Header extends Component {
     render() {
@@ -9,7 +10,7 @@ export default class Header extends Component {
                 <h1>Cocktails</h1>
                 <Login />
                 <SignUp />
-                <p>Search for Cocktails</p>
+                <SearchForm delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
             </div>
         )
     }
