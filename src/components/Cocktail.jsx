@@ -29,13 +29,13 @@ export default class Cocktail extends Component {
                         {/* loop to make 15 tr tags  */}
                     {ingredients.map((ingredient, index) => {
                         return (
-                            this.props.cocktail[ingredient] !== null && (
+                            this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
                             <tr>
                                 {/* if the ingredient or masurement is not equal to null, render it on the page */}
-                                {this.props.cocktail[ingredient] !== null && (
+                                {this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
                                     <td>{this.props.cocktail[ingredients[index]]}</td>
                                 )}
-                                {this.props.cocktail[measurements[index]] !== null && (
+                                {this.props.cocktail[measurements[index]] !== null && this.props.cocktail[measurements[index]] !== '' && (
                                     <td>{this.props.cocktail[measurements[index]]}</td>
                                 )}
                             </tr>

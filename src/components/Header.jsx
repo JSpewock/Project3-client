@@ -9,6 +9,7 @@ export default class Header extends Component {
                 <h1>Cocktails</h1>
                 <Login />
                 <SignUp />
+                <p>Search for Cocktails</p>
             </div>
         )
     }
