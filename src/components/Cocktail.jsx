@@ -18,36 +18,40 @@ export default class Cocktail extends Component {
                 <img src={this.props.cocktail.strDrinkThumb} />
                 <p>{this.props.cocktail.strInstructions}</p>
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Measurement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* loop to make 15 tr tags  */}
-                    {ingredients.map((ingredient, index) => {
-                        return (
-                            this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
-                            <tr>
-                                {/* if the ingredient or masurement is not equal to null, render it on the page */}
-                                {this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
-                                    <td>{this.props.cocktail[ingredients[index]]}</td>
+                {this.props.cocktail.strIngredient1 && (
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ingredient</th>
+                                    <th>Measurement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* loop to make 15 tr tags  */}
+                            {ingredients.map((ingredient, index) => {
+                                return (
+                                    this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
+                                    <tr>
+                                        {/* if the ingredient or masurement is not equal to null, render it on the page */}
+                                        {this.props.cocktail[ingredient] !== null && this.props.cocktail[ingredient] !== '' && (
+                                            <td>{this.props.cocktail[ingredients[index]]}</td>
+                                        )}
+                                        {this.props.cocktail[measurements[index]] !== null && this.props.cocktail[measurements[index]] !== '' && (
+                                            <td>{this.props.cocktail[measurements[index]]}</td>
+                                        )}
+                                    </tr>
+                                    )
                                 )}
-                                {this.props.cocktail[measurements[index]] !== null && this.props.cocktail[measurements[index]] !== '' && (
-                                    <td>{this.props.cocktail[measurements[index]]}</td>
-                                )}
-                            </tr>
-                            )
-                        )}
-                        )
-                    }
-                    </tbody>
-                </table>
+                                )
+                            }
+                            </tbody>
+                        </table>
+                        
 
-                <p>{this.props.cocktail.strAlcoholic}</p>
-                
+                        <p>{this.props.cocktail.strAlcoholic}</p>
+                    </div>
+                )}
                 <button onClick={() => {this.props.delete(this.props.cocktail._id)}}>
                     Delete
                 </button>

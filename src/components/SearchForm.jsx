@@ -12,6 +12,7 @@ export default class Form extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.searchByName = this.searchByName.bind(this)
         this.searchByIngredient = this.searchByIngredient.bind(this)
+        this.moreDetails = this.moreDetails.bind(this)
     }
 
     handleChange(event) {
@@ -38,6 +39,10 @@ export default class Form extends Component {
 
     moreDetails(event) {
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + event.target.id)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({searchResult: data})
+        })
     }
 
     render() {
@@ -65,8 +70,9 @@ export default class Form extends Component {
                         this.state.searchResult.drinks.map(cocktail => {
                             return  (
                                 <div>
-                                    <p onClick=''>More Details</p>
+                                    <p onClick={this.moreDetails} id={cocktail.strDrink}>More Details </p>
                                     <Cocktail cocktail={cocktail} delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
+                                    
                                 </div> 
                             )
                         }
