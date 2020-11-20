@@ -129,7 +129,7 @@ export default class Form extends Component {
                     strMeasure14: '',
                     strMeasure15: ''
                 })
-            })
+            }).then(this.props.toggleCreateForm())
     }
 
     render() {

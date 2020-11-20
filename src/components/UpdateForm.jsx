@@ -100,19 +100,60 @@ export default class UpdateForm extends Component {
     }
 
     render() {
+        const ingredients = []
+        const measurements = []
+        //loop to concatinate strIngredient and Measure 1-15
+        for (let i = 1; i < 16; i++) {
+            let numberString = i.toString()
+            ingredients.push('strIngredient' + numberString)
+            measurements.push('strMeasure' + numberString)
+        }
         return (
-            <div onSubmit={this.handleSubmit}>
-                <h1>Edit {this.state.cocktail.strDrink} </h1>
-                <form>
+            <div>
+                <form onSubmit={this.handleSubmit}>
                     {/* name */}
                     <label htmlFor="strDrink">
                         Cocktail Name: 
                         <input type="text" id="strDrink" value={this.state.strDrink} onChange={this.handleChange}/>
                     </label>
+                    {/* Image */}
+                    <label htmlFor="strDrinkThumb">
+                        Cocktail Image: 
+                        <input type="text" id="strDrinkThumb" value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                    </label>
+                    {/* Ingredients */}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ingredients</th>
+                                <th>Measurement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {ingredients.map((ingredient, index) => {
+                                return (
+                                    <tr>
+                                        <td>
+                                            <label htmlFor={ingredient}>
+                                                <input type='text' id={ingredient} value={this.state[ingredient]} onChange={this.handleChange}/>
+                                            </label>
+                                        </td>
+                                        <td>
+                                        <label htmlFor={measurements[index]}>
+                                                <input type='text' id={measurements[index]} value={this.state[measurements[index]]} onChange={this.handleChange}/>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+
                     {/* instructions */}
                     <label htmlFor="strInstructions">
                         Intructions: 
                         <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/>
+                        {/* <textarea id="strInstructions" onChange={this.handleChange} value={this.state.strInstructions}>{this.state.strInstructions}</textarea> */}
                     </label>
                     {/* isAlcoholic */}
                     <label htmlFor='strAlcoholic'>
