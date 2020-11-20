@@ -8,7 +8,7 @@ export default class Header extends Component {
         return (
             <div>
                 <h1>Cocktails</h1>
-                <Login />
+                <Login baseURL ={this.props.baseURL}/>
                 <SignUp />
                 <SearchForm delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
             </div>

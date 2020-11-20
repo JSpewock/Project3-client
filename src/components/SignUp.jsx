@@ -7,7 +7,12 @@ export default class SignUp extends Component {
             username: '',
             password: ''
         }
+        this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({[event.target.id] : event.target.value})
     }
 
     handleSubmit(event) {
@@ -27,9 +32,10 @@ export default class SignUp extends Component {
                 <p>Create a User</p>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="username">Username: </label>
-                    <input type="text" id="username"/>
+                    <input type="text" id="username" onChange={this.handleChange} value={this.state.username} />
                     <label htmlFor="password">Password: </label>
-                    <input type="text" id="password" />
+                    <input type="text" id="password" onChange={this.handleChange} value={this.state.password} />
+                    <input type="submit" value="sign up" />
                 </form>
             </div>
         )
