@@ -10,7 +10,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       cocktails: [],
-      baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail',
+      baseURL: process.env.BASE_URL || 'http://localhost:3003',
       showUpdateForm: false,
       cocktailToUpdate: {}
     }
@@ -28,7 +28,7 @@ export default class App extends Component {
 
 
   getCocktails() {
-    fetch(this.state.baseURL)
+    fetch(this.state.baseURL + '/cocktail')
     .then(data => {
       return data.json()
     }).then(parsedData => {
@@ -42,7 +42,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(this.state.baseURL + '/' + id, {
+    fetch(this.state.baseURL + '/cocktail/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)

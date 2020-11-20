@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Login from './Login'
-import SignUp from './SignUp'
 
-export default class Header extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -26,7 +24,6 @@ export default class Header extends Component {
     render() {
         return (
             <div>
-                <h1>Cocktails</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="username">Username: </label>
                     <input type="text" id="username"/>

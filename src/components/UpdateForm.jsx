@@ -19,7 +19,7 @@ export default class UpdateForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        fetch(this.props.baseURL + '/' + this.props.cocktail._id, {
+        fetch(this.props.baseURL + '/cocktail/' + this.props.cocktail._id, {
             method: 'PUT',
             body: JSON.stringify({
                 strDrink: this.state.strDrink,

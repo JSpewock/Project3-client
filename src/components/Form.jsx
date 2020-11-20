@@ -6,7 +6,38 @@ export default class Form extends Component {
         this.state = {
             strDrink: '',
             strInstructions: '',
-            strAlcoholic: 'non-Alcoholic'
+            strAlcoholic: 'non-Alcoholic',
+            strDrinkThumb: '',
+            strIngredient1: '',
+            strIngredient2: '',
+            strIngredient3: '',
+            strIngredient4: '',
+            strIngredient5: '',
+            strIngredient6: '',
+            strIngredient7: '',
+            strIngredient8: '',
+            strIngredient9: '',
+            strIngredient10: '',
+            strIngredient11: '',
+            strIngredient12: '',
+            strIngredient13: '',
+            strIngredient14: '',
+            strIngredient15: '',
+            strMeasurement1: '',
+            strMeasurement2: '',
+            strMeasurement3: '',
+            strMeasurement4: '',
+            strMeasurement5: '',
+            strMeasurement6: '',
+            strMeasurement7: '',
+            strMeasurement8: '',
+            strMeasurement9: '',
+            strMeasurement10: '',
+            strMeasurement11: '',
+            strMeasurement12: '',
+            strMeasurement13: '',
+            strMeasurement14: '',
+            strMeasurement15: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,12 +49,43 @@ export default class Form extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        fetch(this.props.baseURL, {
+        fetch(this.props.baseURL + '/cocktail', {
             method: 'POST',
             body: JSON.stringify({
                 strDrink: this.state.strDrink,
                 strInstructions: this.state.strInstructions,
-                strAlcoholic: this.state.strAlcoholic
+                strAlcoholic: this.state.strAlcoholic,
+                strDrinkThumb: this.state.strDrinkThumb,
+                strIngredient1: '',
+                strIngredient2: '',
+                strIngredient3: '',
+                strIngredient4: '',
+                strIngredient5: '',
+                strIngredient6: '',
+                strIngredient7: '',
+                strIngredient8: '',
+                strIngredient9: '',
+                strIngredient10: '',
+                strIngredient11: '',
+                strIngredient12: '',
+                strIngredient13: '',
+                strIngredient14: '',
+                strIngredient15: '',
+                strMeasurement1: '',
+                strMeasurement2: '',
+                strMeasurement3: '',
+                strMeasurement4: '',
+                strMeasurement5: '',
+                strMeasurement6: '',
+                strMeasurement7: '',
+                strMeasurement8: '',
+                strMeasurement9: '',
+                strMeasurement10: '',
+                strMeasurement11: '',
+                strMeasurement12: '',
+                strMeasurement13: '',
+                strMeasurement14: '',
+                strMeasurement15: ''
             }),
             headers:{
                 'Content-Type': 'application/json'
@@ -35,7 +97,37 @@ export default class Form extends Component {
                     strDrink: '',
                     strInstructions: '',
                     strAlcoholic: 'non-Alcoholic',
-                    resetCheck: ''
+                    strDrinkThumb: '',
+                    strIngredient1: '',
+                    strIngredient2: '',
+                    strIngredient3: '',
+                    strIngredient4: '',
+                    strIngredient5: '',
+                    strIngredient6: '',
+                    strIngredient7: '',
+                    strIngredient8: '',
+                    strIngredient9: '',
+                    strIngredient10: '',
+                    strIngredient11: '',
+                    strIngredient12: '',
+                    strIngredient13: '',
+                    strIngredient14: '',
+                    strIngredient15: '',
+                    strMeasurement1: '',
+                    strMeasurement2: '',
+                    strMeasurement3: '',
+                    strMeasurement4: '',
+                    strMeasurement5: '',
+                    strMeasurement6: '',
+                    strMeasurement7: '',
+                    strMeasurement8: '',
+                    strMeasurement9: '',
+                    strMeasurement10: '',
+                    strMeasurement11: '',
+                    strMeasurement12: '',
+                    strMeasurement13: '',
+                    strMeasurement14: '',
+                    strMeasurement15: ''
                 })
             })
     }
@@ -49,6 +141,28 @@ export default class Form extends Component {
                         Cocktail Name: 
                         <input type="text" id="strDrink" value={this.state.strDrink} onChange={this.handleChange}/>
                     </label>
+                    {/* Ingredients */}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ingredients</th>
+                                <th>Measurement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {for(let i = 1; i < 16; i++) {
+                                return (
+                                    
+                                )
+                            }}
+                        <tbody>
+
+                    </table>
+                    <label htmlFor='strIngredient1'>
+                        Ingredients:
+                        <input type='text' id='strIngredient1' value={this.state.strIngredient1} onChange={this.handleChange}/>
+                    </label>
+
                     {/* instructions */}
                     <label htmlFor="strInstructions">
                         Intructions: 
