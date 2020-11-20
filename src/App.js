@@ -10,8 +10,9 @@ export default class App extends Component {
     super(props)
     this.state = {
       cocktails: [],
-      baseURL: process.env.BASE_URL || 'http://localhost:3003/cocktail',
+      baseURL: process.env.BASE_URL || 'http://localhost:3003',
       showUpdateForm: false,
+      showCreateForm: false,
       cocktailToUpdate: {}
     }
     this.getCocktails = this.getCocktails.bind(this)
@@ -20,6 +21,7 @@ export default class App extends Component {
     this.showUpdateForm = this.showUpdateForm.bind(this)
     this.toggleUpdateForm = this.toggleUpdateForm.bind(this)
     this.handleUpdateCocktail = this.handleUpdateCocktail.bind(this)
+    this.toggleCreateForm = this.toggleCreateForm.bind(this)
   }
   
   componentDidMount() {
@@ -28,7 +30,7 @@ export default class App extends Component {
 
 
   getCocktails() {
-    fetch(this.state.baseURL)
+    fetch(this.state.baseURL + '/cocktail')
     .then(data => {
       return data.json()
     }).then(parsedData => {
@@ -42,7 +44,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(this.state.baseURL + '/' + id, {
+    fetch(this.state.baseURL + '/cocktail/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
@@ -63,6 +65,11 @@ export default class App extends Component {
     this.setState({showUpdateForm : false})
   }
 
+  toggleCreateForm() {
+    this.setState({showCreateForm : !this.state.showCreateForm})
+  }
+
+
   handleUpdateCocktail(data) {
     const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === data._id)
     const fakeCocktails = [...this.state.cocktails]
@@ -73,13 +80,15 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        < Header />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={this.state.baseURL} />
         {this.state.showUpdateForm ? ( 
-          < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
-          )  : (
+            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
+          ) : this.state.showCreateForm ? (
+            < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+          ) : (
           <div>
-          < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail}/>
-          < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
+            <button onClick={this.toggleCreateForm}>create</button>
+            < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>
         )
         }
