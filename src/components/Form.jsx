@@ -8,36 +8,36 @@ export default class Form extends Component {
             strInstructions: '',
             strAlcoholic: 'non-Alcoholic',
             strDrinkThumb: '',
-            strIngredient1: '',
-            strIngredient2: '',
-            strIngredient3: '',
-            strIngredient4: '',
-            strIngredient5: '',
-            strIngredient6: '',
-            strIngredient7: '',
-            strIngredient8: '',
-            strIngredient9: '',
-            strIngredient10: '',
-            strIngredient11: '',
-            strIngredient12: '',
-            strIngredient13: '',
-            strIngredient14: '',
-            strIngredient15: '',
-            strMeasurement1: '',
-            strMeasurement2: '',
-            strMeasurement3: '',
-            strMeasurement4: '',
-            strMeasurement5: '',
-            strMeasurement6: '',
-            strMeasurement7: '',
-            strMeasurement8: '',
-            strMeasurement9: '',
-            strMeasurement10: '',
-            strMeasurement11: '',
-            strMeasurement12: '',
-            strMeasurement13: '',
-            strMeasurement14: '',
-            strMeasurement15: ''
+            strIngredient1: null,
+            strIngredient2: null,
+            strIngredient3: null,
+            strIngredient4: null,
+            strIngredient5: null,
+            strIngredient6: null,
+            strIngredient7: null,
+            strIngredient8: null,
+            strIngredient9: null,
+            strIngredient10: null,
+            strIngredient11: null,
+            strIngredient12: null,
+            strIngredient13: null,
+            strIngredient14: null,
+            strIngredient15: null,
+            strMeasure1: null,
+            strMeasure2: null,
+            strMeasure3: null,
+            strMeasure4: null,
+            strMeasure5: null,
+            strMeasure6: null,
+            strMeasure7: null,
+            strMeasure8: null,
+            strMeasure9: null,
+            strMeasure10: null,
+            strMeasure11: null,
+            strMeasure12: null,
+            strMeasure13: null,
+            strMeasure14: null,
+            strMeasure15: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -56,36 +56,36 @@ export default class Form extends Component {
                 strInstructions: this.state.strInstructions,
                 strAlcoholic: this.state.strAlcoholic,
                 strDrinkThumb: this.state.strDrinkThumb,
-                strIngredient1: '',
-                strIngredient2: '',
-                strIngredient3: '',
-                strIngredient4: '',
-                strIngredient5: '',
-                strIngredient6: '',
-                strIngredient7: '',
-                strIngredient8: '',
-                strIngredient9: '',
-                strIngredient10: '',
-                strIngredient11: '',
-                strIngredient12: '',
-                strIngredient13: '',
-                strIngredient14: '',
-                strIngredient15: '',
-                strMeasurement1: '',
-                strMeasurement2: '',
-                strMeasurement3: '',
-                strMeasurement4: '',
-                strMeasurement5: '',
-                strMeasurement6: '',
-                strMeasurement7: '',
-                strMeasurement8: '',
-                strMeasurement9: '',
-                strMeasurement10: '',
-                strMeasurement11: '',
-                strMeasurement12: '',
-                strMeasurement13: '',
-                strMeasurement14: '',
-                strMeasurement15: ''
+                strIngredient1: this.state.strIngredient1,
+                strIngredient2: this.state.strIngredient2,
+                strIngredient3: this.state.strIngredient3,
+                strIngredient4: this.state.strIngredient4,
+                strIngredient5: this.state.strIngredient5,
+                strIngredient6: this.state.strIngredient6,
+                strIngredient7: this.state.strIngredient7,
+                strIngredient8: this.state.strIngredient8,
+                strIngredient9: this.state.strIngredient9,
+                strIngredient10: this.state.strIngredient10,
+                strIngredient11: this.state.strIngredient11,
+                strIngredient12: this.state.strIngredient12,
+                strIngredient13: this.state.strIngredient13,
+                strIngredient14: this.state.strIngredient14,
+                strIngredient15: this.state.strIngredient15,
+                strMeasure1: this.state.strMeasure1,
+                strMeasure2: this.state.strMeasure2,
+                strMeasure3: this.state.strMeasure3,
+                strMeasure4: this.state.strMeasure4,
+                strMeasure5: this.state.strMeasure5,
+                strMeasure6: this.state.strMeasure6,
+                strMeasure7: this.state.strMeasure7,
+                strMeasure8: this.state.strMeasure8,
+                strMeasure9: this.state.strMeasure9,
+                strMeasure10: this.state.strMeasure10,
+                strMeasure11: this.state.strMeasure11,
+                strMeasure12: this.state.strMeasure12,
+                strMeasure13: this.state.strMeasure13,
+                strMeasure14: this.state.strMeasure14,
+                strMeasure15: this.state.strMeasure15
             }),
             headers:{
                 'Content-Type': 'application/json'
@@ -98,41 +98,49 @@ export default class Form extends Component {
                     strInstructions: '',
                     strAlcoholic: 'non-Alcoholic',
                     strDrinkThumb: '',
-                    strIngredient1: '',
-                    strIngredient2: '',
-                    strIngredient3: '',
-                    strIngredient4: '',
-                    strIngredient5: '',
-                    strIngredient6: '',
-                    strIngredient7: '',
-                    strIngredient8: '',
-                    strIngredient9: '',
-                    strIngredient10: '',
-                    strIngredient11: '',
-                    strIngredient12: '',
-                    strIngredient13: '',
-                    strIngredient14: '',
-                    strIngredient15: '',
-                    strMeasurement1: '',
-                    strMeasurement2: '',
-                    strMeasurement3: '',
-                    strMeasurement4: '',
-                    strMeasurement5: '',
-                    strMeasurement6: '',
-                    strMeasurement7: '',
-                    strMeasurement8: '',
-                    strMeasurement9: '',
-                    strMeasurement10: '',
-                    strMeasurement11: '',
-                    strMeasurement12: '',
-                    strMeasurement13: '',
-                    strMeasurement14: '',
-                    strMeasurement15: ''
+                    strIngredient1: null,
+                    strIngredient2: null,
+                    strIngredient3: null,
+                    strIngredient4: null,
+                    strIngredient5: null,
+                    strIngredient6: null,
+                    strIngredient7: null,
+                    strIngredient8: null,
+                    strIngredient9: null,
+                    strIngredient10: null,
+                    strIngredient11: null,
+                    strIngredient12: null,
+                    strIngredient13: null,
+                    strIngredient14: null,
+                    strIngredient15: null,
+                    strMeasure1: null,
+                    strMeasure2: null,
+                    strMeasure3: null,
+                    strMeasure4: null,
+                    strMeasure5: null,
+                    strMeasure6: null,
+                    strMeasure7: null,
+                    strMeasure8: null,
+                    strMeasure9: null,
+                    strMeasure10: null,
+                    strMeasure11: null,
+                    strMeasure12: null,
+                    strMeasure13: null,
+                    strMeasure14: null,
+                    strMeasure15: null
                 })
             })
     }
 
     render() {
+        const ingredients = []
+        const measurements = []
+        //loop to concatinate strIngredient and Measure 1-15
+        for (let i = 1; i < 16; i++) {
+            let numberString = i.toString()
+            ingredients.push('strIngredient' + numberString)
+            measurements.push('strMeasure' + numberString)
+        }
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -150,23 +158,30 @@ export default class Form extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {for(let i = 1; i < 16; i++) {
+                            {ingredients.map((ingredient, index) => {
                                 return (
-                                    
+                                    <tr>
+                                        <td>
+                                            <label htmlFor={ingredient}>
+                                                <input type='text' id={ingredient} value={this.state[ingredient]} onChange={this.handleChange}/>
+                                            </label>
+                                        </td>
+                                        <td>
+                                        <label htmlFor={measurements[index]}>
+                                                <input type='text' id={measurements[index]} value={this.state[measurements[index]]} onChange={this.handleChange}/>
+                                            </label>
+                                        </td>
+                                    </tr>
                                 )
-                            }}
-                        <tbody>
-
+                            })}
+                        </tbody>
                     </table>
-                    <label htmlFor='strIngredient1'>
-                        Ingredients:
-                        <input type='text' id='strIngredient1' value={this.state.strIngredient1} onChange={this.handleChange}/>
-                    </label>
 
                     {/* instructions */}
                     <label htmlFor="strInstructions">
                         Intructions: 
-                        <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/>
+                        {/* <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/> */}
+                        <textarea id="strInstructions" onChange={this.handleChange}>{this.state.strInstructions}</textarea>
                     </label>
                     {/* isAlcoholic */}
                     <label htmlFor='strAlcoholic'>
