@@ -5,13 +5,21 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+// information on react bootstrap taken from the react bootstrap docs https://react-bootstrap.github.io/components/cards/
+
+let BASE_URL = ''
+if (process.env.REACT_APP_BASE_URL) {
+  BASE_URL = process.env.REACT_APP_BASE_URL
+} else {
+  BASE_URL = 'http://localhost:3003'
+}
+// console.log(process.env.BASE_URL)
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       cocktails: [],
-      baseURL: process.env.BASE_URL || 'http://localhost:3003',
       showUpdateForm: false,
       showCreateForm: false,
       cocktailToUpdate: {}
@@ -27,11 +35,13 @@ export default class App extends Component {
   
   componentDidMount() {
     this.getCocktails()
+    console.log(process.env)
+    console.log(BASE_URL)
   }
 
 
   getCocktails() {
-    fetch(this.state.baseURL + '/cocktail')
+    fetch(BASE_URL + '/cocktail')
     .then(data => {
       return data.json()
     }).then(parsedData => {
@@ -45,7 +55,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(this.state.baseURL + '/cocktail/' + id, {
+    fetch(BASE_URL + '/cocktail/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
@@ -81,15 +91,15 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={this.state.baseURL} />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
         {this.state.showUpdateForm ? ( 
-            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
+            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={BASE_URL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
-            < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+            < Form baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
-            {/* < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/> */}
+            < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>
         )
         }
