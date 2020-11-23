@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Login from './Login'
-import SignUp from './SignUp'
+// import Login from './Login'
+// import SignUp from './SignUp'
 import SearchForm from './SearchForm'
 
 export default class Header extends Component {

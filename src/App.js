@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/Header'
 import Form from './components/Form'
-import CocktailList from './components/CoktailList'
+// import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
