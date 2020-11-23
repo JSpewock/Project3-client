@@ -5,7 +5,7 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const baseURL = process.env.BASE_URL || 'http://localhost:3003'
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3003'
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends Component {
 
 
   getCocktails() {
-    fetch(baseURL + '/cocktail')
+    fetch(BASE_URL + '/cocktail')
     .then(data => {
       return data.json()
     }).then(parsedData => {
@@ -45,7 +45,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(baseURL + '/cocktail/' + id, {
+    fetch(BASE_URL + '/cocktail/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
@@ -81,11 +81,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={baseURL} />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} BASE_URL={baseURL} />
         {this.state.showUpdateForm ? ( 
-            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
+            < UpdateForm cocktail={this.state.cocktailToUpdate} BASE_URL={baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
-            < Form baseURL={baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+            < Form BASE_URL={baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
