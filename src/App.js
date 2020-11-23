@@ -5,7 +5,12 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3003'
+let BASE_URL = ''
+if (process.env.BASE_URL) {
+  BASE_URL = process.env.BASE_URL
+} else {
+  BASE_URL = 'http://localhost:3003'
+}
 
 export default class App extends Component {
   constructor(props) {
