@@ -6,8 +6,8 @@ import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 let BASE_URL = ''
-if (process.env.BASE_URL) {
-  BASE_URL = process.env.BASE_URL
+if (REACT_APP_BASE_URL) {
+  BASE_URL = REACT_APP_BASE_URL
 } else {
   BASE_URL = 'http://localhost:3003'
 }
