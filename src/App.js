@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/Header'
 import Form from './components/Form'
-// import CocktailList from './components/CoktailList'
+import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -89,7 +89,7 @@ export default class App extends Component {
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
-            {/* < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/> */}
+            < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>
         )
         }
