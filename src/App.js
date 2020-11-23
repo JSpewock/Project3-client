@@ -36,6 +36,7 @@ export default class App extends Component {
   componentDidMount() {
     this.getCocktails()
     console.log(process.env)
+    console.log(BASE_URL)
   }
 
 
@@ -90,11 +91,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} BASE_URL={BASE_URL} />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
         {this.state.showUpdateForm ? ( 
-            < UpdateForm cocktail={this.state.cocktailToUpdate} BASE_URL={BASE_URL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
+            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={BASE_URL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
-            < Form BASE_URL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+            < Form baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
