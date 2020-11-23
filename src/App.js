@@ -5,7 +5,7 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-require('dotenv').config()
+
 
 let BASE_URL = ''
 if (process.env.REACT_APP_BASE_URL) {
@@ -13,6 +13,7 @@ if (process.env.REACT_APP_BASE_URL) {
 } else {
   BASE_URL = 'http://localhost:3003'
 }
+// console.log(process.env.BASE_URL)
 
 export default class App extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class App extends Component {
   
   componentDidMount() {
     this.getCocktails()
+    console.log(process.env)
   }
 
 
