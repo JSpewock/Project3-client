@@ -5,13 +5,13 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+const baseURL = process.env.BASE_URL || 'http://localhost:3003'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       cocktails: [],
-      baseURL: process.env.BASE_URL || 'http://localhost:3003',
       showUpdateForm: false,
       showCreateForm: false,
       cocktailToUpdate: {}
@@ -31,7 +31,7 @@ export default class App extends Component {
 
 
   getCocktails() {
-    fetch(this.state.baseURL + '/cocktail')
+    fetch(baseURL + '/cocktail')
     .then(data => {
       return data.json()
     }).then(parsedData => {
@@ -45,7 +45,7 @@ export default class App extends Component {
 
   //taken from GA w08d05 lesson notes
   deleteCocktail(id) {
-    fetch(this.state.baseURL + '/cocktail/' + id, {
+    fetch(baseURL + '/cocktail/' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.cocktails.findIndex(cocktail => cocktail._id === id)
@@ -81,11 +81,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={this.state.baseURL} />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={baseURL} />
         {this.state.showUpdateForm ? ( 
-            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
+            < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
-            < Form baseURL={this.state.baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+            < Form baseURL={baseURL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
