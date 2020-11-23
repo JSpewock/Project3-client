@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Form from './components/Form'
 import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 export default class App extends Component {
@@ -79,7 +80,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={this.state.baseURL} />
         {this.state.showUpdateForm ? ( 
             < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={this.state.baseURL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
@@ -88,7 +89,7 @@ export default class App extends Component {
           ) : (
           <div>
             <button onClick={this.toggleCreateForm}>create</button>
-            < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
+            {/* < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/> */}
           </div>
         )
         }
