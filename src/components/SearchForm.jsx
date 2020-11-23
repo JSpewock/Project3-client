@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Cocktail from './Cocktail'
+import { Form, Button } from 'react-bootstrap/'
 
-export default class Form extends Component {
+export default class SearchForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -48,25 +49,27 @@ export default class Form extends Component {
     render() {
         return (
             <div>
-                <p>Use a database to search for favorite cocktails!</p>
-                <form onSubmit={this.searchByName}>
-                    <label htmlFor="name">
-                        Search by cocktail name: 
-                        <input type="text" id="name" placeholder='Type Name Here' value={this.state.name} onChange={this.handleChange} />
-                        <input type="submit" value="Search by Name" />
-                    </label>
-                </form>
-                    
-                <form onSubmit={this.searchByIngredient}>
-                    <label htmlFor="ingredient">
-                        Search by ingredient: 
-                        <input type="text" id="ingredient" placeholder="Type Ingredient Here" value={this.state.ingredient} onChange={this.handleChange}/>
-                        <input type="submit" value="Search by Ingredient" />
-                    </label>
-                </form>
-
-                <div className="search-results">
-                    {this.state.searchResult.drinks && (
+            <Form onSubmit={this.searchByName}>
+                <Form.Group>
+                    <Form.Label htmlFor='name'>Search by cocktail name:</Form.Label>
+                    <Form.Control type='text' id='name' placeholder='Type Name Here' value={this.state.name} onChange={this.handleChange}/>
+                </Form.Group>
+                <Button variant='light' type='submit'>
+                    Submit
+                </Button>
+            </Form>
+            <Form onSubmit={this.searchByIngredient}>
+                <Form.Group>
+                    <Form.Label htmlFor='ingredient'>Search by Ingredient:</Form.Label>
+                    <Form.Control type='text' id='ingredient' placeholder='Type Ingredient Here' value={this.state.ingredient} onChange={this.handleChange}/>
+                </Form.Group>
+                <Button variant='light' type='submit'>
+                    Submit
+                </Button>
+            </Form>
+            
+            <div className="search-results">
+                     {this.state.searchResult.drinks && (
                         this.state.searchResult.drinks.map(cocktail => {
                             return  (
                                 <div>

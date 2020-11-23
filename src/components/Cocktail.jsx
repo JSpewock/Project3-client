@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import { Card } from 'react-bootstrap'
 
 
 export default class Cocktail extends Component {

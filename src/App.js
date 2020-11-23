@@ -5,7 +5,7 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-
+// information on react bootstrap taken from the react bootstrap docs https://react-bootstrap.github.io/components/cards/
 
 let BASE_URL = ''
 if (process.env.REACT_APP_BASE_URL) {

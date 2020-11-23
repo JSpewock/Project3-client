@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comfortaa&family=Slabo+27px&display=swap');
+
+
 * {
   border: 1px solid  goldenrod; 
   /* background-color: black; */
@@ -7,6 +10,9 @@ body {
   background-image: linear-gradient( 112.4deg,  rgba(169,28,115,1) 21.6%, rgba(219,112,54,1) 92.2% );
 }
 
+h1 { 
+  font-family: 'Architects Daughter', cursive;
+}
 
 img {
   width: 200px;
@@ -28,3 +34,16 @@ img {
 /* h1, h2, h3, h4, h5, h6, p, input, label, td, th, button {
   color: white;
 } */
+
+h1, h2, h3 {
+  font-family: 'Architects Daughter', cursive;
+}
+
+td, p {
+  font-family: 'Comfortaa', cursive;
+}
+
+.card {
+  margin: 5px;
+  border-radius: 5px;
+}
