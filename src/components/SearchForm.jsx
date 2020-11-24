@@ -15,6 +15,7 @@ export default class SearchForm extends Component {
         this.searchByIngredient = this.searchByIngredient.bind(this)
         this.moreDetails = this.moreDetails.bind(this)
         this.addLocal = this.addLocal.bind(this)
+        this.moreDeatilsLocal = this.moreDeatilsLocal.bind(this)
     }
 
     handleChange(event) {
@@ -27,13 +28,25 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
+            this.addLocal()
         })
-        this.addLocal()
+        
         
     }
 
+
+    searchByIngredient(event) {
+        event.preventDefault()
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + this.state.ingredient)
+        .then(res => res.json())
+        .then(data => {
+            this.setState({searchResult: data})
+            this.addLocal()
+        })
+    }
+
     addLocal() {
-        fetch(this.props.baseURL + '/cocktail/findByName', {
+        fetch(this.props.baseURL + '/cocktail/findByIngre', {
             method: 'POST',
             body: JSON.stringify({
                 name: this.state.name,
@@ -45,25 +58,41 @@ export default class SearchForm extends Component {
         })
         .then (res=> res.json())
         .then(data => {
-            // const dummyArray = [...this.state.searchResult.drinks, data]
-            console.log(data)
-        })
-    }
-
-    searchByIngredient(event) {
-        event.preventDefault()
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + this.state.ingredient)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({searchResult: data})
+            const dummyArray = this.state.searchResult.drinks
+            data.map(cocktail => {
+                dummyArray.push(cocktail)
+            })
+            this.setState({[this.state.searchResult.drinks]: dummyArray})
         })
     }
 
     moreDetails(event) {
+        console.log(event.currentTarget)
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + event.target.id)
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
+            this.moreDeatilsLocal(event.target.id)
+        })
+    }
+
+    moreDeatilsLocal(name) {
+        fetch(this.props.baseURL + '/cocktail/findByName', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: name
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then (res=> res.json())
+        .then(data => {
+            const dummyArray = this.state.searchResult.drinks
+            data.map(cocktail => {
+                dummyArray.push(cocktail)
+            })
+            this.setState({[this.state.searchResult.drinks]: dummyArray})
         })
     }
 

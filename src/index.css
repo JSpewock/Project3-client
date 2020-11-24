@@ -99,5 +99,10 @@ form {
   padding: 10px;
   font-weight: 600;
 }
+.search-results > div {
+  margin: 5px;
+  border-radius: 5px;
+  border: 2px solid goldenrod;
+}
 
 
