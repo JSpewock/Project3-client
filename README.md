@@ -8,7 +8,7 @@ Our CockTails application was created to solve the problem of curious adults loo
 
 ### Technologies Used
 
-CockTails utilized the basic tools of a full-stack MERN application, along with our own MongoDB database and third-party API that was mentioned above. This application follows CRUD functionality, allowing for easy means to create cocktails, read cocktail information (ingredients, measurements, and instructions), update them, and delete from the page.
+CockTails utilizes the basic tools of a full-stack MERN application, along with our own MongoDB database and third-party API that was mentioned above. This application follows CRUD functionality, allowing for easy means to create cocktails, read cocktail information (ingredients, measurements, and instructions), update them, and delete from the page.
 
 ### Unsolved Problems
 * User authentication - This was initially a goal of ours to include in the application, so that the user could not only add and create cocktails on the page, but also denote favorites and create customized lists by the user's choice. This proved difficult in working with ReactJS user authentication, but is definitely something to work on moving forward.
