@@ -30,7 +30,9 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
+            this.props.showSearch()
             this.addLocalByName()
+            
         })
         
         
@@ -43,7 +45,9 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
+            this.props.showSearch()
             this.addLocalByIngre()
+            
         })
     }
 
@@ -159,7 +163,10 @@ export default class SearchForm extends Component {
                             return  (
                                 <div>
                                     <Cocktail cocktail={cocktail} delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
-                                    <p onClick={this.moreDetails} id={cocktail.strDrink} className="more-details">More Details </p>
+                                    <div className="more-details-flex">
+                                        <Button onClick={this.moreDetails} id={cocktail.strDrink} variant='info' className="more-details">More Details</Button>
+                                    </div>
+                                    {/* <p onClick={this.moreDetails} id={cocktail.strDrink} className="more-details">More Details </p> */}
                                 </div> 
                             )
                         }
