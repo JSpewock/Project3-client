@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Form, Button, Table } from 'react-bootstrap'
 
-export default class Form extends Component {
+export default class CreateForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -142,63 +143,74 @@ export default class Form extends Component {
             measurements.push('strMeasure' + numberString)
         }
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    {/* name */}
-                    <label htmlFor="strDrink">
-                        Cocktail Name: 
-                        <input type="text" id="strDrink" value={this.state.strDrink} onChange={this.handleChange}/>
-                    </label>
-                    {/* Image */}
-                    <label htmlFor="strDrinkThumb">
-                        Cocktail Image: 
-                        <input type="text" id="strDrinkThumb" value={this.state.strDrinkThumb} onChange={this.handleChange}/>
-                    </label>
-                    {/* Ingredients */}
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Ingredients</th>
-                                <th>Measurement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {ingredients.map((ingredient, index) => {
-                                return (
-                                    <tr>
-                                        <td>
-                                            <label htmlFor={ingredient}>
-                                                <input type='text' id={ingredient} value={this.state[ingredient]} onChange={this.handleChange}/>
-                                            </label>
-                                        </td>
-                                        <td>
-                                        <label htmlFor={measurements[index]}>
-                                                <input type='text' id={measurements[index]} value={this.state[measurements[index]]} onChange={this.handleChange}/>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
+            <div className="create-form-flexbox">
+            <div className="create-form-div">
+                <Form onSubmit={this.handleSubmit}>
+                        <Form.Group>
+                            <Form.Label htmlFor='strDrink'>Cocktail Name:</Form.Label>
+                            <Form.Control type='text' id='strDrink' placeholder='' value={this.state.strDrink} onChange={this.handleChange}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor='strDrinkThumb'>Cocktail Image:</Form.Label>
+                            <Form.Control type='text' id='strDrinkThumb' placeholder='' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+                        </Form.Group>
 
-                    {/* instructions */}
-                    <label htmlFor="strInstructions">
-                        Intructions: 
-                        <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/>
-                        {/* <textarea id="strInstructions" onChange={this.handleChange} value={this.state.strInstructions}>{this.state.strInstructions}</textarea> */}
-                    </label>
-                    {/* isAlcoholic */}
-                    <label htmlFor='strAlcoholic'>
-                        Alcoholic
-                        <input type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange} />
-                    </label>
-                    <label htmlFor='strAlcoholic'>
-                        non-Alcoholic
-                        <input type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Add Cocktail"/>
-                </form>
+
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ingredients</th>
+                                        <th>Measurement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {ingredients.map((ingredient, index) => {
+                                        return (
+                                            <tr>
+                                                <td>
+                                                    {index + 1}
+                                                </td>
+                                                <td>
+                                                    <Form.Group>
+                                                        <Form.Label htmlFor={ingredient}></Form.Label>
+                                                        <Form.Control type='text' id={ingredient} placeholder='' value={this.state[ingredient]} onChange={this.handleChange}/>
+                                                    </Form.Group>
+                                                </td>
+                                                <td>
+                                                    <Form.Group>
+                                                        <Form.Label htmlFor={measurements[index]}></Form.Label>
+                                                        <Form.Control type='text' id={measurements[index]} placeholder='' value={this.state[measurements[index]]} onChange={this.handleChange}/>
+                                                    </Form.Group>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </Table>
+
+
+                        <Form.Group>
+                            <Form.Label htmlFor='strInstructions'>Cocktail Instructions:</Form.Label>
+                            <Form.Control type='text' id='strInstructions' placeholder='' value={this.state.strInstructions} onChange={this.handleChange}/>
+                        </Form.Group>
+
+
+                        <Form.Group>
+                            <Form.Label htmlFor='strAlcoholic'>Alcoholic:</Form.Label>
+                            <Form.Control type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label htmlFor='strAlcoholic'>non-Alcoholic:</Form.Label>
+                            <Form.Control type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange}/>
+                        </Form.Group>
+
+
+                        <Button variant='light' type='submit'>
+                            Add Cocktail
+                        </Button>
+                    </Form>
+            </div>
             </div>
         )
     }
