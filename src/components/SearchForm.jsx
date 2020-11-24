@@ -14,7 +14,8 @@ export default class SearchForm extends Component {
         this.searchByName = this.searchByName.bind(this)
         this.searchByIngredient = this.searchByIngredient.bind(this)
         this.moreDetails = this.moreDetails.bind(this)
-        this.addLocal = this.addLocal.bind(this)
+        this.addLocalByName = this.addLocalByName.bind(this)
+        this.addLocalByIngre = this.addLocalByIngre.bind(this)
         this.moreDeatilsLocal = this.moreDeatilsLocal.bind(this)
     }
 
@@ -28,7 +29,7 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
-            this.addLocal()
+            this.addLocalByName()
         })
         
         
@@ -41,12 +42,33 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
-            this.addLocal()
+            this.addLocalByIngre()
         })
     }
 
-    addLocal() {
-        fetch(this.props.baseURL + '/cocktail/findByIngre', {
+    addLocalByName() {
+        fetch(this.props.baseURL + '/cocktail/findByName', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: this.state.name,
+                ingredient: this.state.ingredient
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then (res=> res.json())
+        .then(data => {
+            const dummyArray = this.state.searchResult.drinks
+            data.map(cocktail => {
+                dummyArray.push(cocktail)
+            })
+            this.setState({[this.state.searchResult.drinks]: dummyArray})
+        })
+    }
+
+    addLocalByIngre() {
+        fetch(this.props.baseURL + '/cocktail/findByName', {
             method: 'POST',
             body: JSON.stringify({
                 name: this.state.name,
@@ -119,6 +141,7 @@ export default class SearchForm extends Component {
                         </Button>
                     </Form>
                 </div>
+                {/* {this.state} */}
                 <div className="search-results">
                     {this.state.searchResult.drinks && (
                         this.state.searchResult.drinks.map(cocktail => {

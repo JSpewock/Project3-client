@@ -171,7 +171,7 @@ export default class CreateForm extends Component {
                                                 <td>
                                                     <Form.Group>
                                                         <Form.Label htmlFor={ingredient}></Form.Label>
-                                                        <Form.Control type='text' id='ingredient' placeholder='' value={this.state[ingredient]} onChange={this.handleChange}/>
+                                                        <Form.Control type='text' id={ingredient} placeholder='' value={this.state[ingredient]} onChange={this.handleChange}/>
                                                     </Form.Group>
                                                 </td>
                                                 <td>
