@@ -121,4 +121,17 @@ form, .search-form > form {
   width: 1000px;
 }
 
+/* footer */
+.footer > h4 {
+  background-color: rgb(50, 61, 73);
+  color: lightsteelblue;
+  width: 100%;
+  font-size: 23px;
+  text-align: center;
+  padding: 5px;
+}
+
+.footer > img {
+  margin-left: 45%;
+}
 
