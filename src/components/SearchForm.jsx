@@ -69,13 +69,12 @@ export default class SearchForm extends Component {
             </Form>
             
             <div className="search-results">
-                     {this.state.searchResult.drinks && (
+                    {this.state.searchResult.drinks && (
                         this.state.searchResult.drinks.map(cocktail => {
                             return  (
                                 <div>
-                                    <p onClick={this.moreDetails} id={cocktail.strDrink}>More Details </p>
                                     <Cocktail cocktail={cocktail} delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
-                                    
+                                    <p onClick={this.moreDetails} id={cocktail.strDrink} className="more-details">More Details </p>
                                 </div> 
                             )
                         }

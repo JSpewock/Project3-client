@@ -8,7 +8,7 @@ export default class Header extends Component {
         return (
             
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-info">
+                {/* <nav class="navbar navbar-expand-lg navbar-light bg-info">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -18,7 +18,7 @@ export default class Header extends Component {
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </div>
-                </nav>
+                </nav> */}
                 <h1 className="header" className="text-center">CockTails</h1>
                 {/* <Login baseURL ={this.props.baseURL}/>
                 <SignUp /> */}

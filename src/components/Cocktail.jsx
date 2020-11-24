@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Button from 'react-bootstrap/Button'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 
 export default class Cocktail extends Component {
@@ -17,7 +17,7 @@ export default class Cocktail extends Component {
         return (
 
             <Card style={{ width: '18rem'}} id={this.props.cocktail.strDrink} key={this.props.cocktail._id}>
-                <Card.Img variant="top" src={this.props.cocktail.strDrinkThumb} style={{ width: '18rem'}}/>
+                <Card.Img variant="top" src={this.props.cocktail.strDrinkThumb} />
                 <Card.Body style={{flex: 1}}>
                     <Card.Title as="h2">{this.props.cocktail.strDrink}</Card.Title>
                     <Card.Text>
@@ -52,17 +52,15 @@ export default class Cocktail extends Component {
                             }
                             </tbody>
                         </table>
-                        <p>{this.props.cocktail.strAlcoholic}</p>
+                        <p className="is-alcoholic">{this.props.cocktail.strAlcoholic}</p>
                     </div>
                     )}
                     {this.props.cocktail.idDrink ? (
                         null
                     ) : (
                         <div className="edit-delete-buttons">
-                            <button onClick={() => {this.props.delete(this.props.cocktail._id)}}>
-                            Delete
-                            </button>
-                            <button onClick={()=> {this.props.showUpdateForm(this.props.cocktail)}}>Edit</button>
+                            <Button onClick={() => {this.props.delete(this.props.cocktail._id)}} variant='outline-danger' size='sm'>Delete</Button>
+                            <Button onClick={()=> {this.props.showUpdateForm(this.props.cocktail)}} variant='outline-warning' size='sm'>Edit</Button>
                         </div>
                     )}
                     

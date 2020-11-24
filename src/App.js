@@ -4,6 +4,7 @@ import Form from './components/Form'
 import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'react-bootstrap'
 
 // information on react bootstrap taken from the react bootstrap docs https://react-bootstrap.github.io/components/cards/
 
@@ -98,7 +99,8 @@ export default class App extends Component {
             < Form baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
-            <button onClick={this.toggleCreateForm}>create</button>
+            <Button onClick={this.toggleCreateForm} variant='info'>Add a New Cocktail</Button>
+            {/* <button onClick={this.toggleCreateForm} variant='primary-light'>create</button> */}
             < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>
         )

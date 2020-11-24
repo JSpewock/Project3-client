@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comfortaa&family=Slabo+27px&display=swap');
 
 
-* {
-  border: 1px solid  goldenrod; 
-  /* background-color: black; */
+/* * {
+  box-sizing: border-box;
 
-}
+} */
 body {
   background-image: linear-gradient( 112.4deg,  rgba(169,28,115,1) 21.6%, rgba(219,112,54,1) 92.2% );
 }
@@ -18,7 +17,7 @@ img {
   width: 200px;
 }
 
-.card-img-top {
+.card > img {
   width: 100%;
   height: '18rem';
   object-fit: cover;
@@ -43,7 +42,61 @@ td, p {
   font-family: 'Comfortaa', cursive;
 }
 
-.card {
+.cocktail-list > div {
   margin: 5px;
   border-radius: 5px;
+  border: 2px solid goldenrod;
+}
+
+.card-title {
+  border-top: 2px solid goldenrod;
+}
+
+.card-text {
+  border-bottom: 2px solid goldenrod;
+}
+
+table {
+  border-top: 2px solid goldenrod;
+  border-left: 2px solid goldenrod;
+}
+
+.is-alcoholic {
+  margin-top: 15px;
+  font-weight: 700;
+}
+
+.more-details {
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+form { 
+  width: 25%;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
+}
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
 }
