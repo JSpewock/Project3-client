@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import Login from './Login'
 // import SignUp from './SignUp'
-import SearchForm from './SearchForm'
+// import SearchForm from './SearchForm'
 
 export default class Header extends Component {
     render() {
@@ -23,7 +23,7 @@ export default class Header extends Component {
                 <h3 className="" className="text-center">Where's Your Bev At!</h3>
                 {/* <Login baseURL ={this.props.baseURL}/>
                 <SignUp /> */}
-                <SearchForm delete={this.props.delete} showUpdateForm={this.props.showUpdateForm} baseURL={this.props.baseURL}/>
+                
             </div>
         )
     }

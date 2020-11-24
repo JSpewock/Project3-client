@@ -8,7 +8,8 @@ export default class SearchForm extends Component {
         this.state = {
             searchResult: [],
             name: '',
-            ingredient: ''
+            ingredient: '',
+            ifSearch: this.props.ifSearch
         }
         this.handleChange = this.handleChange.bind(this)
         this.searchByName = this.searchByName.bind(this)
@@ -63,7 +64,10 @@ export default class SearchForm extends Component {
             data.map(cocktail => {
                 dummyArray.push(cocktail)
             })
-            this.setState({[this.state.searchResult.drinks]: dummyArray})
+            this.setState({
+                [this.state.searchResult.drinks]: dummyArray,
+                ifSearch: true
+            })
         })
     }
 
@@ -84,7 +88,10 @@ export default class SearchForm extends Component {
             data.map(cocktail => {
                 dummyArray.push(cocktail)
             })
-            this.setState({[this.state.searchResult.drinks]: dummyArray})
+            this.setState({[
+                this.state.searchResult.drinks]: dummyArray,
+                ifSearch: true
+            })
         })
     }
 
@@ -114,7 +121,10 @@ export default class SearchForm extends Component {
             data.map(cocktail => {
                 dummyArray.push(cocktail)
             })
-            this.setState({[this.state.searchResult.drinks]: dummyArray})
+            this.setState({
+                [this.state.searchResult.drinks]: dummyArray,
+                ifSearch: true
+            })
         })
     }
 
@@ -141,7 +151,8 @@ export default class SearchForm extends Component {
                         </Button>
                     </Form>
                 </div>
-                {/* {this.state} */}
+                {this.state.ifSearch && (
+
                 <div className="search-results">
                     {this.state.searchResult.drinks && (
                         this.state.searchResult.drinks.map(cocktail => {
@@ -155,6 +166,7 @@ export default class SearchForm extends Component {
                         )
                     )}
                 </div>
+                )}
             </div>
         )
     }

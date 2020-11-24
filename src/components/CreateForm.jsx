@@ -143,9 +143,8 @@ export default class CreateForm extends Component {
             measurements.push('strMeasure' + numberString)
         }
         return (
-    
-            
-            <div>
+            <div className="create-form-flexbox">
+            <div className="create-form-div">
                 <Form onSubmit={this.handleSubmit}>
                         <Form.Group>
                             <Form.Label htmlFor='strDrink'>Cocktail Name:</Form.Label>
@@ -160,6 +159,7 @@ export default class CreateForm extends Component {
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Ingredients</th>
                                         <th>Measurement</th>
                                     </tr>
@@ -168,6 +168,9 @@ export default class CreateForm extends Component {
                                     {ingredients.map((ingredient, index) => {
                                         return (
                                             <tr>
+                                                <td>
+                                                    {index + 1}
+                                                </td>
                                                 <td>
                                                     <Form.Group>
                                                         <Form.Label htmlFor={ingredient}></Form.Label>
@@ -208,69 +211,7 @@ export default class CreateForm extends Component {
                         </Button>
                     </Form>
             </div>
-
-            // <div>
-            //     <form onSubmit={this.handleSubmit}>
-            //         {/* name */}
-            //         <label htmlFor="strDrink">
-            //             Cocktail Name: 
-            //             <input type="text" id="strDrink" value={this.state.strDrink} onChange={this.handleChange}/>
-            //         </label>
-            //         {/* Image */}
-            //         <label htmlFor="strDrinkThumb">
-            //             Cocktail Image: 
-            //             <input type="text" id="strDrinkThumb" value={this.state.strDrinkThumb} onChange={this.handleChange}/>
-            //         </label>
-            //         {/* Ingredients */}
-            //         <table>
-            //             <thead>
-            //                 <tr>
-            //                     <th>Ingredients</th>
-            //                     <th>Measurement</th>
-            //                 </tr>
-            //             </thead>
-            //             <tbody>
-            //                 {ingredients.map((ingredient, index) => {
-            //                     return (
-            //                         <tr>
-            //                             <td>
-            //                                 <label htmlFor={ingredient}>
-            //                                     <input type='text' id={ingredient} value={this.state[ingredient]} onChange={this.handleChange}/>
-            //                                 </label>
-            //                             </td>
-            //                             <td>
-            //                             <label htmlFor={measurements[index]}>
-            //                                     <input type='text' id={measurements[index]} value={this.state[measurements[index]]} onChange={this.handleChange}/>
-            //                                 </label>
-            //                             </td>
-            //                         </tr>
-            //                     )
-            //                 })}
-            //             </tbody>
-            //         </table>
-
-            //         {/* instructions */}
-            //         <label htmlFor="strInstructions">
-            //             Intructions: 
-            //             <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/>
-            //             {/* <textarea id="strInstructions" onChange={this.handleChange} value={this.state.strInstructions}>{this.state.strInstructions}</textarea> */}
-            //         </label>
-
-
-            //         {/* isAlcoholic */}
-            //         <label htmlFor='strAlcoholic'>
-            //             Alcoholic
-            //             <input type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange} />
-            //         </label>
-
-
-            //         <label htmlFor='strAlcoholic'>
-            //             non-Alcoholic
-            //             <input type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange} />
-            //         </label>
-            //         <input type="submit" value="Add Cocktail"/>
-            //     </form>
-            // </div>
+            </div>
         )
     }
 }

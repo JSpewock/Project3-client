@@ -5,6 +5,8 @@ import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
+import SearchForm from './components/SearchForm'
+import Footer from './components/Footer'
 
 // information on react bootstrap taken from the react bootstrap docs https://react-bootstrap.github.io/components/cards/
 
@@ -23,7 +25,8 @@ export default class App extends Component {
       cocktails: [],
       showUpdateForm: false,
       showCreateForm: false,
-      cocktailToUpdate: {}
+      cocktailToUpdate: {},
+      ifSearch: false
     }
     this.getCocktails = this.getCocktails.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
@@ -69,6 +72,7 @@ export default class App extends Component {
   showUpdateForm(cocktailToUpdate) {
     this.setState({
       showUpdateForm: true,
+      ifSearch: false,
       cocktailToUpdate: cocktailToUpdate
     })
   }
@@ -78,7 +82,10 @@ export default class App extends Component {
   }
 
   toggleCreateForm() {
-    this.setState({showCreateForm : !this.state.showCreateForm})
+    this.setState({
+      showCreateForm : !this.state.showCreateForm,
+      ifSearch: false
+    })
   }
 
 
@@ -88,25 +95,28 @@ export default class App extends Component {
     fakeCocktails[findIndex] = data
     this.setState({cocktails: fakeCocktails})
   }
+
   
   render() {
     return (
       <div className="container-fluid">
         <div className="header">
-        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
+        < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} ifSearch={this.state.ifSearch}/>
         </div>
         {this.state.showUpdateForm ? ( 
             < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={BASE_URL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
             < CreateForm baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
-          <div>
+          <div className="main-list">
+            <SearchForm delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
             <Button onClick={this.toggleCreateForm} variant='info' class="newCocktail">Add a New Cocktail</Button>
             {/* <button onClick={this.toggleCreateForm} variant='primary-light'>create</button> */}
             < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>
         )
         }
+        <Footer />
       </div>
     )
   }

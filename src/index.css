@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Comfortaa&family=Slabo+27px&display=swap');
 
 
-/* * {
-  box-sizing: border-box;
 
-} */
 body {
   background-image: linear-gradient( 112.4deg,  rgba(169,28,115,1) 21.6%, rgba(219,112,54,1) 92.2% );
 }
@@ -30,9 +27,7 @@ img {
   justify-content: center;
 }
 
-/* h1, h2, h3, h4, h5, h6, p, input, label, td, th, button {
-  color: white;
-} */
+
 
 .newCocktail {
   justify-content: center;
@@ -45,6 +40,11 @@ h1, h2, h3 {
 td, p {
   font-family: 'Comfortaa', cursive;
 }
+
+.main-list {
+  margin-bottom: 50px;
+}
+
 /* --------------------- */
 /* card styles */
 /* -------------------------- */
@@ -84,6 +84,8 @@ table {
   box-shadow: 3px 3px gray;
 }
 
+
+
 /* ---------------------
         Search Form
 ------------------------*/
@@ -92,8 +94,13 @@ table {
   justify-content: center;
 }
 
-form { 
-  width: 50%;
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+form, .search-form > form { 
+  width: 25%;
   text-align: center;
   display: inline-block;
   padding: 10px;
@@ -103,6 +110,15 @@ form {
   margin: 5px;
   border-radius: 5px;
   border: 2px solid goldenrod;
+}
+
+/* update form */
+.update-form-flexbox, .create-form-flexbox {
+  display: flex;
+  justify-content: center;
+}
+.update-form-div > form, .create-form-div > form {
+  width: 1000px;
 }
 
 
