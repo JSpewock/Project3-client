@@ -26,7 +26,7 @@ export default class App extends Component {
       showUpdateForm: false,
       showCreateForm: false,
       cocktailToUpdate: {},
-      ifSearch: false
+      showSearch: false
     }
     this.getCocktails = this.getCocktails.bind(this)
     this.handleAddCocktail = this.handleAddCocktail.bind(this)
@@ -35,6 +35,7 @@ export default class App extends Component {
     this.toggleUpdateForm = this.toggleUpdateForm.bind(this)
     this.handleUpdateCocktail = this.handleUpdateCocktail.bind(this)
     this.toggleCreateForm = this.toggleCreateForm.bind(this)
+    this.toggleShowSearch = this.toggleShowSearch.bind(this)
   }
   
   componentDidMount() {
@@ -96,6 +97,10 @@ export default class App extends Component {
     this.setState({cocktails: fakeCocktails})
   }
 
+  toggleShowSearch() {
+    this.setState({showSearch: true})
+  }
+
   
   render() {
     return (
@@ -109,15 +114,21 @@ export default class App extends Component {
             < CreateForm baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div className="main-list">
-            <SearchForm delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
-            <Button onClick={this.toggleCreateForm} variant='info' class="newCocktail">Add a New Cocktail</Button>
-            {/* <button onClick={this.toggleCreateForm} variant='primary-light'>create</button> */}
-            < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
+            <SearchForm delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} showSearch={this.toggleShowSearch} />
+              <Button onClick={this.toggleCreateForm} variant='info' class="newCocktail">Add a New Cocktail</Button>
+              {this.state.showSearch ? (
+                null
+              ) : (
+                <div> 
+                  < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
+                </div>
+              )}
           </div>
-        )
-        }
+          )
+          }
         <Footer />
       </div>
     )
+    
   }
 }

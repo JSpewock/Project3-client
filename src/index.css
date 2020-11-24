@@ -6,9 +6,6 @@ body {
   background-image: linear-gradient( 112.4deg,  rgba(169,28,115,1) 21.6%, rgba(219,112,54,1) 92.2% );
 }
 
-h1 { 
-  font-family: 'Architects Daughter', cursive;
-}
 
 img {
   width: 200px;
@@ -72,11 +69,14 @@ table {
   font-weight: 700;
 }
 
+.more-details-flex {
+  display: flex;
+  justify-content: center;
+}
+
 .more-details {
-  background-color: white;
   width: 60%;
-  margin: auto;
-  text-align: center;
+  margin-top: 15px;
 }
 
 .more-details:hover {
@@ -121,4 +121,17 @@ form, .search-form > form {
   width: 1000px;
 }
 
+/* footer */
+.footer > h4 {
+  background-color: rgb(50, 61, 73);
+  color: lightsteelblue;
+  width: 100%;
+  font-size: 23px;
+  text-align: center;
+  padding: 5px;
+}
+
+.footer > img {
+  margin-left: 45%;
+}
 
