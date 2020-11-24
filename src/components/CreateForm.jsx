@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
-export default class Form extends Component {
+export default class CreateForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -142,6 +143,40 @@ export default class Form extends Component {
             measurements.push('strMeasure' + numberString)
         }
         return (
+    
+            
+            // <div>
+            //     <Form onSubmit={this.handleSubmit}>
+            //             <Form.Group>
+            //                 <Form.Label htmlFor='strDrink'>Cocktail Name:</Form.Label>
+            //                 <Form.Control type='text' id='strDrink' placeholder='' value={this.state.strDrink} onChange={this.handleChange}/>
+            //             </Form.Group>
+            //             <Form.Group>
+            //                 <Form.Label htmlFor='strDrinkThumb'>Cocktail Image:</Form.Label>
+            //                 <Form.Control type='text' id='strDrinkThumb' placeholder='' value={this.state.strDrinkThumb} onChange={this.handleChange}/>
+            //             </Form.Group>
+            //             <Form.Group>
+            //                 <Form.Label htmlFor='strInstructions'>Cocktail Instructions:</Form.Label>
+            //                 <Form.Control type='text' id='strInstructions' placeholder='' value={this.state.strInstructions} onChange={this.handleChange}/>
+            //             </Form.Group>
+
+
+            //             <Form.Group>
+            //                 <Form.Label htmlFor='strAlcoholic'>Alcoholic:</Form.Label>
+            //                 <Form.Control type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange}/>
+            //             </Form.Group>
+            //             <Form.Group>
+            //                 <Form.Label htmlFor='strAlcoholic'>non-Alcoholic:</Form.Label>
+            //                 <Form.Control type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange}/>
+            //             </Form.Group>
+
+
+            //             <Button variant='light' type='submit'>
+            //                 Add Cocktail
+            //             </Button>
+            //         </Form>
+            // </div>
+
             <div>
                 <form onSubmit={this.handleSubmit}>
                     {/* name */}
@@ -188,11 +223,15 @@ export default class Form extends Component {
                         <input type="text" id="strInstructions" value={this.state.strInstructions} onChange={this.handleChange}/>
                         {/* <textarea id="strInstructions" onChange={this.handleChange} value={this.state.strInstructions}>{this.state.strInstructions}</textarea> */}
                     </label>
+
+
                     {/* isAlcoholic */}
                     <label htmlFor='strAlcoholic'>
                         Alcoholic
                         <input type='radio' id='strAlcoholic' value='Alcoholic' name='Alcoholic' onChange={this.handleChange} />
                     </label>
+
+
                     <label htmlFor='strAlcoholic'>
                         non-Alcoholic
                         <input type='radio' id='strAlcoholic' value='non-Alcoholic' name='Alcoholic' onChange={this.handleChange} />

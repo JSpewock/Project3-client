@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './components/Header'
-import Form from './components/Form'
+import CreateForm from './components/CreateForm'
 import CocktailList from './components/CoktailList'
 import UpdateForm from './components/UpdateForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -92,14 +92,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="container-fluid">
+        <div className="header">
         < Header delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm} baseURL={BASE_URL} />
+        </div>
         {this.state.showUpdateForm ? ( 
             < UpdateForm cocktail={this.state.cocktailToUpdate} baseURL={BASE_URL} toggleUpdateForm={this.toggleUpdateForm} handleUpdateCocktail={this.handleUpdateCocktail} />
           ) : this.state.showCreateForm ? (
-            < Form baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
+            < CreateForm baseURL={BASE_URL} addCocktail={this.handleAddCocktail} toggleCreateForm={this.toggleCreateForm}/>
           ) : (
           <div>
-            <Button onClick={this.toggleCreateForm} variant='info'>Add a New Cocktail</Button>
+            <Button onClick={this.toggleCreateForm} variant='info' class="newCocktail">Add a New Cocktail</Button>
             {/* <button onClick={this.toggleCreateForm} variant='primary-light'>create</button> */}
             < CocktailList allCocktails={this.state.cocktails} delete={this.deleteCocktail} showUpdateForm={this.showUpdateForm}/>
           </div>

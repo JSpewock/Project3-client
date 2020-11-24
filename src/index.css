@@ -34,6 +34,10 @@ img {
   color: white;
 } */
 
+.newCocktail {
+  justify-content: center;
+}
+
 h1, h2, h3 {
   font-family: 'Architects Daughter', cursive;
 }
@@ -41,7 +45,9 @@ h1, h2, h3 {
 td, p {
   font-family: 'Comfortaa', cursive;
 }
-
+/* --------------------- */
+/* card styles */
+/* -------------------------- */
 .cocktail-list > div {
   margin: 5px;
   border-radius: 5px;
@@ -72,31 +78,26 @@ table {
   margin: auto;
   text-align: center;
 }
+
+.more-details:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px gray;
+}
+
+/* ---------------------
+        Search Form
+------------------------*/
+.header {
+  display: flex;
+  justify-content: center;
+}
+
 form { 
-  width: 25%;
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 600;
 }
 
-.more-details:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px gray;
-}
 
-.more-details:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px gray;
-}
-
-.more-details:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px gray;
-}
-
-.more-details:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px gray;
-}
-
-.more-details:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px gray;
-}

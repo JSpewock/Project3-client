@@ -14,6 +14,7 @@ export default class SearchForm extends Component {
         this.searchByName = this.searchByName.bind(this)
         this.searchByIngredient = this.searchByIngredient.bind(this)
         this.moreDetails = this.moreDetails.bind(this)
+        this.addLocal = this.addLocal.bind(this)
     }
 
     handleChange(event) {
@@ -26,6 +27,26 @@ export default class SearchForm extends Component {
         .then(res => res.json())
         .then(data => {
             this.setState({searchResult: data})
+        })
+        this.addLocal()
+        
+    }
+
+    addLocal() {
+        fetch(this.props.baseURL + '/cocktail/findByName', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: this.state.name,
+                ingredient: this.state.ingredient
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then (res=> res.json())
+        .then(data => {
+            // const dummyArray = [...this.state.searchResult.drinks, data]
+            console.log(data)
         })
     }
 
@@ -49,26 +70,27 @@ export default class SearchForm extends Component {
     render() {
         return (
             <div>
-            <Form onSubmit={this.searchByName}>
-                <Form.Group>
-                    <Form.Label htmlFor='name'>Search by cocktail name:</Form.Label>
-                    <Form.Control type='text' id='name' placeholder='Type Name Here' value={this.state.name} onChange={this.handleChange}/>
-                </Form.Group>
-                <Button variant='light' type='submit'>
-                    Submit
-                </Button>
-            </Form>
-            <Form onSubmit={this.searchByIngredient}>
-                <Form.Group>
-                    <Form.Label htmlFor='ingredient'>Search by Ingredient:</Form.Label>
-                    <Form.Control type='text' id='ingredient' placeholder='Type Ingredient Here' value={this.state.ingredient} onChange={this.handleChange}/>
-                </Form.Group>
-                <Button variant='light' type='submit'>
-                    Submit
-                </Button>
-            </Form>
-            
-            <div className="search-results">
+                <div className="search-form">
+                    <Form onSubmit={this.searchByName}>
+                        <Form.Group>
+                            <Form.Label htmlFor='name'>Search by cocktail name:</Form.Label>
+                            <Form.Control type='text' id='name' placeholder='Type Name Here' value={this.state.name} onChange={this.handleChange}/>
+                        </Form.Group>
+                        <Button variant='light' type='submit'>
+                            Submit
+                        </Button>
+                    </Form>
+                    <Form onSubmit={this.searchByIngredient}>
+                        <Form.Group>
+                            <Form.Label htmlFor='ingredient'>Search by ingredient:</Form.Label>
+                            <Form.Control type='text' id='ingredient' placeholder='Type Ingredient Here' value={this.state.ingredient} onChange={this.handleChange}/>
+                        </Form.Group>
+                        <Button variant='light' type='submit'>
+                            Submit
+                        </Button>
+                    </Form>
+                </div>
+                <div className="search-results">
                     {this.state.searchResult.drinks && (
                         this.state.searchResult.drinks.map(cocktail => {
                             return  (

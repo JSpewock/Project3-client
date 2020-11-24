@@ -20,9 +20,10 @@ export default class Header extends Component {
                     </div>
                 </nav> */}
                 <h1 className="header" className="text-center">CockTails</h1>
+                <h3 className="" className="text-center">Where's Your Bev At!</h3>
                 {/* <Login baseURL ={this.props.baseURL}/>
                 <SignUp /> */}
-                <SearchForm delete={this.props.delete} showUpdateForm={this.props.showUpdateForm}/>
+                <SearchForm delete={this.props.delete} showUpdateForm={this.props.showUpdateForm} baseURL={this.props.baseURL}/>
             </div>
         )
     }
